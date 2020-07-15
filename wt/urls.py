@@ -23,6 +23,7 @@ from wt.att_subscriptions.views import ATTSubscriptionViewSet
 from wt.plans.views import PlanViewSet
 from wt.purchases.views import PurchaseViewSet
 from wt.sprint_subscriptions.views import SprintSubscriptionViewSet
+from wt.usage.views import SubscriptionsView
 
 router = routers.DefaultRouter()
 
@@ -30,6 +31,7 @@ router.register(r'att_subscriptions', ATTSubscriptionViewSet)
 router.register(r'plans', PlanViewSet)
 router.register(r'purchases', PurchaseViewSet)
 router.register(r'sprint_subscriptions', SprintSubscriptionViewSet)
+router.register(r'usage', SubscriptionsView, base_name='usage')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

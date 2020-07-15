@@ -2,12 +2,12 @@ from decimal import Decimal
 
 from django.contrib.auth.models import User
 from django.db import models
-from model_utils import Choices
+from model_utils import Choices, models as models_utils
 
 from wt.plans.models import Plan
 
 
-class ATTSubscription(models.Model):
+class ATTSubscription(models_utils.TimeStampedModel):
     ONE_KILOBYTE_PRICE = Decimal('0.001')
     ONE_SECOND_PRICE = Decimal('0.001')
 
@@ -29,8 +29,5 @@ class ATTSubscription(models.Model):
     network_type = models.CharField(max_length=5, blank=True, default='')
 
     effective_date = models.DateTimeField(null=True)
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     deleted = models.BooleanField(default=False)

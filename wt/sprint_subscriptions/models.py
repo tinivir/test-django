@@ -3,12 +3,12 @@ from decimal import Decimal
 from django.contrib.auth.models import User
 from django.db import models
 
-from model_utils import Choices
+from model_utils import Choices, models as models_utils
 
 from wt.plans.models import Plan
 
 
-class SprintSubscription(models.Model):
+class SprintSubscription(models_utils.TimeStampedModel):
     """Represents a subscription with Sprint for a user and a single device"""
     STATUS = Choices(
         ('new', 'New'),
@@ -32,8 +32,5 @@ class SprintSubscription(models.Model):
     sprint_id = models.CharField(max_length=16, null=True)
 
     effective_date = models.DateTimeField(null=True)
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     deleted = models.BooleanField(default=False)
